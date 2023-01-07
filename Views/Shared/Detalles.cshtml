@@ -1,0 +1,41 @@
+﻿@using pedidos_dap5.Controllers;
+@using pedidos_dap5.Services;
+@model int 
+
+@{
+     PedidosController pedidos_detalle = new PedidosController();
+      var detalles = pedidos_detalle.Detalles(Model);
+
+}
+
+@{
+    var identificar = detalles.First().IdPedido;
+}
+
+<table class="table animar w-50 float-end" id="@identificar" style="display:none">
+    @* <thead>*@
+        <tr class="w-100">
+        <td class="w-100">
+               Estado
+            </td>
+        <td class="w-100">
+               Fecha
+            </td>
+          
+        </tr>
+   @* </thead>
+    <tbody>*@
+@foreach (var item in detalles) {
+        <tr class="w-100">
+
+            <td class="w-100">
+                @Html.DisplayFor(modelItem => item.Estado_descripcion)
+            </td>
+            <td class="w-100">
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+         
+        </tr>
+}
+    @*    </tbody>*@
+</table>

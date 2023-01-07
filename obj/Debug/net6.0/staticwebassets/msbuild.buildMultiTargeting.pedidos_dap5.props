@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\pedidos_dap5.props" />
+</Project>

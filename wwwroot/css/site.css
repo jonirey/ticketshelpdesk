@@ -1,0 +1,196 @@
+@font-face {
+    font-family: 'Mulish';
+    src: url('../Fonts/Mulish-VariableFont_wght.ttf') format('truetype');
+}
+
+html {
+  font-size: 14px;
+}
+
+    html.dark-mode {
+        filter: invert(100%);
+        transition: all 0.5s;
+        -webkit-transition: all 0.8s;
+    }
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+/*body {
+  margin-bottom: 60px;
+}*/
+
+
+:root {
+    --primary: #111B54;
+    /* #111B54;*/
+    --light: #657786;
+    --grey: #AAB8C2;
+    --dark: #14171A;
+    --clear: #D3D3D3;
+}
+
+body {
+    overflow: visible;
+    font-family: 'Mulish', sans-serif;
+    font-weight: 300;
+    color: var(--dark) !important;
+    background-color: var(--clear);
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.bg-primary {
+    background-color: var(--primary) !important;
+}
+
+.bg-light {
+    background-color: var(--light) !important;
+}
+
+.bg-grey {
+    background-color: var(--grey) !important;
+}
+
+.bg-mix {
+    background: linear-gradient(180deg, var(--light) 50%, var(--grey) 0);
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    border: 0;
+}
+
+    .btn-primary:hover {
+        background-color: var(--grey);
+    }
+        
+#sidebar-container {
+   
+}
+
+.btn-cerrar
+{
+    width:15%;
+    margin: 2vh 2vw -1vh 40vw;
+    z-index:5;
+}
+.pedidotecnico {
+    display: flex;
+    justify-content: space-between;
+}
+#sidebar-container .logo {
+    padding: 0.875rem 1.25rem;
+}
+
+    #sidebar-container .menu {
+        width: 18rem;
+    }
+
+#content {
+    overflow: auto;
+    height: 100vh;
+    
+}
+
+
+
+.avatar {
+    max-width: 35px;
+}
+
+.btn-search {
+    right: 0;
+}
+
+.stat {
+    border-right: 1px solid var(--grey);
+}
+
+th, td {
+    color:var(--dark);
+    
+}
+
+table {
+    border: 1px solid!important;
+    border-color: var(--dark) !important;
+    border-radius: 5px !important;
+}
+
+.modal-dialog {
+    max-width: 100%;
+    margin: auto auto;
+}
+
+.modal-content {
+    width: 50%;
+    height: 90%;
+    margin: auto auto;
+}
+
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    margin: 2% auto;
+    text-align: left;
+    font-family: arial;
+}
+
+.card-header {
+    background-color: var(--primary);
+    color: white;
+    padding: 20px;
+    font-size: 30px;
+}
+
+.card-body {
+    padding: 20px;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.largebox{
+    height: 45vh;
+}
+
+.control
+{
+    width:98%;
+    margin: 0 1% 0 1%;
+
+}
+
+.editarestado{
+    width:27%;
+}
+.control label {
+    font-weight: bold;
+}
+
+
+@media (max-width: 768px) {
+    #sidebar-container {
+        display: none;
+    }
+
+    .stat {
+        border: 0;
+    }
+}
+  

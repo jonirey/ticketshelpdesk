@@ -1,0 +1,71 @@
+﻿@using pedidos_dap5.Services;
+@model pedidos_dap5.Models.Usuario
+
+@{
+    ViewData["Title"] = "Nuevo Usuario";
+    TraerPersonas personas = new TraerPersonas();
+    int tec = 0;
+     tec = personas.existetecnico();
+}
+@if (tec == 0) {
+<h4>Esta es la primera vez que usted usa esta aplicación, por favor complete los siguientes datos.</h4>
+}
+else 
+{
+    <h4>Crear Usuario</h4>
+
+}
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @if(tec!=0)
+            {
+            <div class="form-group">
+                <label asp-for="Usuario1" class="control-label">Cuenta de Rina</label>
+                <input asp-for="Usuario1" class="form-control" value="@ViewBag.Usuario"  />
+                <span asp-validation-for="Usuario1" class="text-danger"></span>
+            </div>
+            }
+            else 
+            {
+            <div class="form-group">
+                <label asp-for="Usuario1" class="control-label">Cuenta de Rina</label>
+                <input asp-for="Usuario1" class="form-control" value="@ViewBag.Usuario" disabled />
+                <span asp-validation-for="Usuario1" class="text-danger"></span>
+            </div>
+            }
+            <div class="form-group">
+                <label asp-for="Grado" class="control-label"></label>
+                <select asp-for="Grado" class ="form-control" asp-items="ViewBag.Grado" ></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label">Apellido y nombre</label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Interno" class="control-label"></label>
+                <input type="number" maxlength="4"  asp-for="Interno" class="form-control" />
+                <span asp-validation-for="Interno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TelParticular" class="control-label"></label>
+                <input type="number" maxlength="20" asp-for="TelParticular" class="form-control" />
+                <span asp-validation-for="TelParticular" class="text-danger">Telefono particular(Opcional)</span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crear Usuario" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+  
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

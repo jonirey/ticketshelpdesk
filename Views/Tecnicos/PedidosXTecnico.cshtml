@@ -1,0 +1,94 @@
+﻿@model IEnumerable<pedidos_dap5.Models.ViewModels.ViewModelPedido>
+
+@{
+    @using pedidos_dap5.Controllers;
+    ViewData["Title"] = "Tickets";
+}
+
+<h3>Mis tickets</h3>
+    <div class="form-group w-50">
+        <label class="control-label"> Filtar por Estado:</label>
+    <select id="ddlEstadoTecnico" class="form-control" asp-items="ViewBag.Estado" name="Estado" onchange="cambio()">
+       <option value="0" selected>Seleccionar</option>
+        </select>
+    <span  class="text-danger"></span>
+</div>
+<div id="tablas">
+@foreach (var item in Model) {
+        <table class="table @item.Descripcion_estado.ToString().Trim().Replace(" ", "").Replace(".", "")">
+    <thead>
+        <tr>
+                <th>     
+               <button type="button" class="btn btn-primary" onclick="Ocultar(@item.Idpedido)">+</button></th>
+              
+            <th>
+              Nro. De ticket
+            </th>
+            <th>
+                Descripción ticket
+            </th>
+            <th>
+               Usuario
+            </th>
+            <th>
+               Tec. Asignado
+            </th>
+            <th>
+                Estado
+            </th>
+            <th>
+             Fecha de Incio
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <td></td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Idpedido)
+                </td>
+            <td>
+                        @(item.Descripcion_pedido.Length > 50 ?  item.Descripcion_pedido.Substring(0, 50 )  :item.Descripcion_pedido )
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tecnico1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion_estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaInicio)
+            </td>
+                    @if (item.Estado <4)
+                    {
+                          <td>
+                          
+                            <a class="btn btn-primary" data-url="/Tecnicos/Edit/@item.Idpedido" onclick="mostrarFormulario(this)">Editar ticket</a>
+
+                        </td>
+                    }
+                    else
+                    {
+                        <td class="fw-bold text-primary">
+                            <a class="btn btn-primary" data-url="/Soluciones/Details/@item.Idpedido" onclick="mostrarFormulario(this)">Ver resolución</a>
+                        </td>
+                    }
+                </tr>
+
+    </tbody>
+</table>
+    @Html.Partial("Detalles", item.Idpedido)
+
+   
+
+}
+</div>
+
+
+
+

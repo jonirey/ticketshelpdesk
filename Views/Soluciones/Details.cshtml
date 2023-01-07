@@ -1,0 +1,82 @@
+﻿@model pedidos_dap5.Models.ViewModels.ViewModelSoluciones
+
+@{
+    ViewData["Title"] = "Detalles";
+}
+
+
+<div>
+    <h4>Detalle de solución</h4>
+  
+    <table class="table table-light">
+        <thead>
+            <tr>
+                <th scope="col">Nro. de ticket</th>
+                <th scope="col">Usuario</th>
+                <th scope="col">Técnico</th>
+                <th scope="col">Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayFor(model => model.IdPedido)</td>
+                <td>@Html.DisplayFor(model => model.UsuarioDescripcion)</td>
+                <td>@Html.DisplayFor(model => model.TecnicoDescricpcion)</td>
+                <td>@Html.DisplayFor(model => model.EstadoDescripcion)</td>
+            </tr>
+        </tbody>
+        </table>
+
+    <table class="table table-light">
+        <thead>
+            <tr>
+                <th scope="col">Fecha de inicio</th>
+                <th scope="col">Fecha de Solución</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayFor(model => model.FechaInicio)</td>
+                <td>@Html.DisplayFor(model => model.FechaSolucion)</td>
+            </tr>
+        </tbody>
+        </table>
+    <table class="table table-light">
+        <thead>
+            <tr>
+                <th scope="col">Descripción de ticket</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayFor(model => model.Pedido)</td>
+            </tr>
+        </tbody>
+        <thead>
+            <tr>
+                <th scope="col">Solución</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayFor(model => model.Solucion)</td>
+            </tr>
+        </tbody>
+    </table>
+   
+       
+        
+        
+        
+       
+        
+       
+       
+       
+       
+        
+
+   
+    
+</div>
+

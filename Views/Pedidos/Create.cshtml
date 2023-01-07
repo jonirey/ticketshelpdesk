@@ -1,0 +1,65 @@
+﻿@using pedidos_dap5.Services;
+@model pedidos_dap5.Models.Pedido
+ 
+@{
+    ViewData["Title"] = "Nuevo Pedido";
+    TraerPersonas personas = new TraerPersonas();
+    int tec = 0;
+     tec = personas.existetecnico();
+}
+
+
+
+<h4>Nuevo Ticket</h4>
+ 
+<div class="row">
+    <div class="col-12">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label"> Describa que necesita: se sugiere redacción clara y detallada.</label>
+                <textarea asp-for="Descripcion" class="form-control largebox" required></textarea>
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+         @*  //-----------------------------------solo para técnicos------------------------------*@
+
+         @if (tec!=0){
+             <div class="pedidotecnico">
+                    <div class="form-group control">
+                        <label asp-for="Usuario" class="control-label"></label>
+                        <select asp-for="Usuario" class ="form-control" asp-items="ViewBag.Usuario"></select>
+                        <a class="link-primary" data-url="/User/Create" onclick="mostrarFormulario(this)">Crear usuario</a>
+@*                        <button type="button" class="btn btn-primary" data-url="/User/Create" onclick="mostrarFormulario(this)">Crear usuario</button>
+*@
+                    </div>
+                    <div class="form-group control">
+                        <label asp-for="Tecnico" class="control-label"></label>
+                        <select asp-for="Tecnico" class ="form-control" asp-items="ViewBag.Tecnico"></select>
+                    </div>
+                    <div class="form-group control">
+                        <label asp-for="Estado" class="control-label"></label>
+                        <select asp-for="Estado" class ="form-control" asp-items="ViewBag.Estado"></select>
+                    </div>
+              </div>
+            }
+            @*aca termina la parte para técnicos*@
+            @*<div class="form-group">
+                <label asp-for="FechaInicio" class="control-label"></label>
+                <input asp-for="FechaInicio" class="form-control" disabled/>
+                <span asp-validation-for="FechaInicio" class="text-danger"></span>
+            </div>*@
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Crear ticket" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+  
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
